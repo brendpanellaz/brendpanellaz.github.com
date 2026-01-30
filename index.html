@@ -2,181 +2,134 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<title>BrendPanel.az — TikTok SMM Panel</title>
-<meta name="description" content="BrendPanel.az - TikTok üçün real, ömürlük qalıcı və ucuz SMM paketləri">
+<title>BrendPanel.az — SMM Panel</title>
+<meta name="description" content="TikTok və Instagram üçün real və bot qarantili ucuz SMM paketləri">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #2b2b2b, #000);
-  color: #ffd700;
-  text-align: center;
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:radial-gradient(circle at top,#2b2b2b,#000);
+  color:#ffd700;
+  text-align:center;
+}
+.container{max-width:420px;margin:auto;padding:25px}
+.logo{font-size:56px;animation:glow 2s infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px gold}to{text-shadow:0 0 35px gold}}
+.title{font-size:30px;font-weight:bold}
+.subtitle{font-size:15px;color:#fff;margin:12px 0 30px}
+
+.card{
+  background:linear-gradient(145deg,#111,#1c1c1c);
+  border:1px solid #ffd700;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 0 20px rgba(255,215,0,.4);
+  transition:.3s;
+}
+.card:hover{transform:scale(1.03);box-shadow:0 0 35px rgba(255,215,0,.9)}
+.card h3{margin:8px 0}
+.card p{margin:6px 0;color:#fff}
+
+.badge{
+  display:inline-block;
+  background:#ffd700;
+  color:#000;
+  font-size:12px;
+  padding:4px 12px;
+  border-radius:20px;
+  font-weight:bold;
 }
 
-.container {
-  max-width: 420px;
-  margin: auto;
-  padding: 25px;
+.order-btn{
+  display:block;
+  margin-top:12px;
+  padding:12px;
+  background:#25D366;
+  color:#000;
+  font-weight:bold;
+  text-decoration:none;
+  border-radius:10px;
+  box-shadow:0 0 15px #25D366;
 }
+.order-btn:hover{background:#6bff9c}
 
-.logo {
-  font-size: 56px;
-  margin-bottom: 10px;
-  animation: glow 2s infinite alternate;
+.whatsapp{margin-top:35px}
+.whatsapp a{
+  display:inline-block;
+  background:#25D366;
+  padding:18px;
+  border-radius:50%;
+  box-shadow:0 0 30px #25D366;
 }
+.whatsapp img{width:55px}
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px gold; }
-  to { text-shadow: 0 0 35px gold; }
-}
-
-.title {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.subtitle {
-  font-size: 15px;
-  margin: 12px 0 30px;
-  color: #fff;
-}
-
-.card {
-  background: linear-gradient(145deg, #111, #1c1c1c);
-  border: 1px solid #ffd700;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 18px;
-  box-shadow: 0 0 20px rgba(255,215,0,0.4);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 35px rgba(255,215,0,0.9);
-}
-
-.card h3 {
-  margin: 10px 0;
-}
-
-.card p {
-  margin: 6px 0;
-  color: #fff;
-}
-
-.badge {
-  display: inline-block;
-  background: #ffd700;
-  color: #000;
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.order-btn {
-  display: block;
-  margin-top: 12px;
-  padding: 12px;
-  background: #25D366;
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #25D366;
-}
-
-.order-btn:hover {
-  background: #6bff9c;
-}
-
-.whatsapp {
-  margin-top: 35px;
-}
-
-.whatsapp a {
-  display: inline-block;
-  background: #25D366;
-  padding: 18px;
-  border-radius: 50%;
-  box-shadow: 0 0 30px #25D366;
-  animation: pulse 1.5s infinite;
-}
-
-.whatsapp img {
-  width: 55px;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 15px #25D366; }
-  50% { box-shadow: 0 0 40px #25D366; }
-  100% { box-shadow: 0 0 15px #25D366; }
-}
-
-footer {
-  font-size: 13px;
-  color: #aaa;
-  margin-top: 30px;
-}
+footer{font-size:13px;color:#aaa;margin-top:30px}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-  <div class="logo">👑</div>
-  <div class="title">BrendPanel.az</div>
-  <div class="subtitle">🇦🇿 Azərbaycanın Ən Ucuz və Güvənli TikTok SMM Paneli</div>
+<div class="logo">👑</div>
+<div class="title">BrendPanel.az</div>
+<div class="subtitle">🇦🇿 Ucuz • Güvənli • Sürətli SMM Panel</div>
 
-  <!-- BAŞLIQ -->
-  <div class="card">
-    <h3>🎵 TikTok Paketləri</h3>
-  </div>
+<!-- TIKTOK -->
+<div class="card"><h3>🎵 TikTok Paketləri</h3></div>
 
-  <!-- PAKET 1 -->
-  <div class="card">
-    <span class="badge">🔥 Ən Çox Satılan</span>
-    <h3>TikTok Real Qarantili Paket</h3>
-    <p>👁️ 1.000 İzlənmə</p>
-    <p>♥️ 1.000 Bəyənmə</p>
-    <p>🔒 Ömürlük Qalıcı • Real</p>
-    <p><b>💰 3 AZN</b></p>
-    <a class="order-btn" href="https://wa.me/994516159103?text=Salam%20BrendPanel.az%20-%201000%20TikTok%20izlenme%20ve%201000%20beyenme%20Real%20Qarantili%20Omurluk%20paket%20sifaris%20etmek%20isteyirem">
-      WhatsApp-dan sifariş et
-    </a>
-  </div>
+<div class="card">
+<span class="badge">🔥 Ən Çox Satılan</span>
+<h3>Real Qarantili Paket</h3>
+<p>👁️ 1.000 İzlənmə</p>
+<p>♥️ 1.000 Bəyənmə</p>
+<p>🔒 Ömürlük Qalıcı</p>
+<p><b>💰 3 AZN</b></p>
+<a class="order-btn" href="https://wa.me/994516159103?text=TikTok%201000%20izlenme%201000%20beyenme%20real%20paket">WhatsApp-dan sifariş et</a>
+</div>
 
-  <!-- PAKET 2 -->
-  <div class="card">
-    <h3>👤 1.000 TikTok Takipçi</h3>
-    <p>✅ Real • Qarantili</p>
-    <p><b>💰 5 AZN</b></p>
-    <a class="order-btn" href="https://wa.me/994516159103?text=1000%20TikTok%20real%20takipci%20sifaris">
-      WhatsApp-dan sifariş et
-    </a>
-  </div>
+<div class="card">
+<h3>👁️ 10.000 İzlənmə + ♥️ 10.000 Bəyənmə</h3>
+<p>🤖 Bot Qarantili</p>
+<p><b>💰 3 AZN</b></p>
+<a class="order-btn" href="https://wa.me/994516159103?text=TikTok%2010000%20izlenme%2010000%20beyenme%20bot">WhatsApp-dan sifariş et</a>
+</div>
 
-  <!-- PAKET 3 -->
-  <div class="card">
-    <h3>👁️ 30.000 TikTok İzlənmə</h3>
-    <p>🤖 Bot • Qarantili</p>
-    <p><b>💰 2 AZN</b></p>
-    <a class="order-btn" href="https://wa.me/994516159103?text=30000%20TikTok%20izlenme%20sifaris">
-      WhatsApp-dan sifariş et
-    </a>
-  </div>
+<div class="card">
+<h3>🚀 TikTok Keşfeti Açır</h3>
+<p>👁️ 1.500 İzlənmə</p>
+<p>♥️ 1.000 Bəyənmə</p>
+<p>💾 100 Kaydet • 🔁 50 Paylaşım • 💬 10 Yorum</p>
+<p><b>💰 3 AZN</b></p>
+<a class="order-btn" href="https://wa.me/994516159103?text=TikTok%20kesfet%20paketi%201500%20izlenme">WhatsApp-dan sifariş et</a>
+</div>
 
-  <!-- WHATSAPP DÜYMƏ -->
-  <div class="whatsapp">
-    <a href="https://wa.me/994516159103">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
-  </div>
+<!-- INSTAGRAM -->
+<div class="card"><h3>📸 Instagram Paketləri</h3></div>
 
-  <footer>© 2026 BrendPanel.az</footer>
+<div class="card">
+<h3>👤 1.000 Instagram Takipçi</h3>
+<p>✅ Real Qarantili</p>
+<p><b>💰 5 AZN</b></p>
+<a class="order-btn" href="https://wa.me/994516159103?text=Instagram%201000%20real%20takipci">WhatsApp-dan sifariş et</a>
+</div>
+
+<div class="card">
+<h3>👁️ 100.000 Reels İzlənmə</h3>
+<p>♥️ 1.000 Bəyənmə</p>
+<p><b>💰 3 AZN</b></p>
+<a class="order-btn" href="https://wa.me/994516159103?text=Instagram%20100000%20izlenme%201000%20beyenme">WhatsApp-dan sifariş et</a>
+</div>
+
+<div class="whatsapp">
+<a href="https://wa.me/994516159103">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+</div>
+
+<footer>© 2026 BrendPanel.az</footer>
 
 </div>
 </body>
