@@ -7,38 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* ===== 7️⃣ ANİMASİYA – HOVER & GLOW ===== */
-
-.card{
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.card:hover{
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 40px rgba(255,215,0,.9);
-}
-
-.order-btn{
-  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
-}
-.order-btn:hover{
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #25D366;
-  background:#6bff9c;
-}
-
-.logo{
-  text-shadow: 0 0 15px gold, 0 0 30px gold;
-}
-
-.badge{
-  animation:pulse 1.8s infinite;
-}
-@keyframes pulse{
-  0%{box-shadow:0 0 5px gold}
-  50%{box-shadow:0 0 20px gold}
-  100%{box-shadow:0 0 5px gold}
-}
-  
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -132,17 +100,6 @@ input, textarea, select{
   margin:6px 0;
 }
 </style>
- /* ===== Scroll animasiya ===== */
-.reveal{
-  opacity:0;
-  transform: translateY(40px);
-  transition: all .6s ease;
-}
-.reveal.active{
-  opacity:1;
-  transform: translateY(0);
-}
- 
 </head>
 
 <body>
@@ -264,22 +221,6 @@ input, textarea, select{
 <footer>© 2025-2026 BrendPanel.az</footer>
 
 <script>
-/* ===== Scroll JS ===== */
-const cards=document.querySelectorAll(".card");
-cards.forEach(c=>c.classList.add("reveal"));
-
-function revealOnScroll(){
-  cards.forEach(c=>{
-    const top=c.getBoundingClientRect().top;
-    const win=window.innerHeight;
-    if(top < win - 60){
-      c.classList.add("active");
-    }
-  });
-}
-window.addEventListener("scroll",revealOnScroll);
-revealOnScroll();
-
 // Dark / Light Mode
 const toggleBtn=document.getElementById("themeToggle");
 function applyTheme(theme){
