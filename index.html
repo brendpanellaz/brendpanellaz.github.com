@@ -233,84 +233,84 @@ input, textarea, select{
 <footer>© 2025-2026 BrendPanel.az</footer>
 
 <script>
-// Online user sayğacı
-let online = 120 + Math.floor(Math.random()*20);
-let orders = 35 + Math.floor(Math.random()*10);
-
-// Online istifadəçi dəyişir
-setInterval(()=>{
-  online += Math.floor(Math.random()*3 - 1);
-  if(online < 80) online = 90;
-  document.getElementById("onlineCount").innerText = online;
-},3000);
-
-// Sifariş sayı artır
-setInterval(()=>{
-  if(Math.random() < 0.4){
-    orders++;
-    document.getElementById("orderCount").innerText = orders;
-  }
-},6000);
-  
-// Dark / Light Mode
-const toggleBtn=document.getElementById("themeToggle");
-function applyTheme(theme){
-  if(theme==="light"){document.body.classList.add("light");toggleBtn.innerText="☀️ Light Mode";}
-  else{document.body.classList.remove("light");toggleBtn.innerText="🌙 Dark Mode";}
-}
-toggleBtn.addEventListener("click",()=>{
-  const current=localStorage.getItem("theme")||"dark";
-  const next=current==="dark"?"light":"dark";
-  localStorage.setItem("theme",next);
-  applyTheme(next);
-});
 document.addEventListener("DOMContentLoaded",()=>{
-  const savedTheme=localStorage.getItem("theme")||"dark";
-  applyTheme(savedTheme);
+
+  // ===== Dark / Light Mode =====
+  const toggleBtn=document.getElementById("themeToggle");
+  function applyTheme(theme){
+    if(theme==="light"){
+      document.body.classList.add("light");
+      toggleBtn.innerText="☀️ Light Mode";
+    }else{
+      document.body.classList.remove("light");
+      toggleBtn.innerText="🌙 Dark Mode";
+    }
+  }
+  toggleBtn.addEventListener("click",()=>{
+    const current=localStorage.getItem("theme")||"dark";
+    const next=current==="dark"?"light":"dark";
+    localStorage.setItem("theme",next);
+    applyTheme(next);
+  });
+  applyTheme(localStorage.getItem("theme")||"dark");
+
+  // ===== Rəy Slayderi =====
+  const reviews=[
+    {text:"WhatsApp dəstək superdir 💯", name:"— Nazim M.", stars:"⭐⭐⭐⭐⭐"},
+    {text:"N1 panel Bunlardı 🔥", name:"— Asim S.", stars:"⭐⭐⭐⭐⭐"},
+    {text:"Çooooox ucuzdur qiymetler 👍", name:"— Gunel R.", stars:"⭐⭐⭐⭐⭐"}
+  ];
+  let i=0;
+  function showReview(){
+    document.getElementById("reviewText").innerText=reviews[i].text;
+    document.getElementById("reviewName").innerText=reviews[i].name;
+    document.getElementById("reviewStars").innerText=reviews[i].stars;
+    i=(i+1)%reviews.length;
+  }
+  showReview();
+  setInterval(showReview,4000);
+
+  // ===== Rəy Formu =====
+  const submitBtn=document.getElementById("submitReview");
+  const allReviewsDiv=document.getElementById("reviewsSlider");
+  let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
+  reviewsList.forEach(r=>{
+    const p=document.createElement("p");
+    p.innerHTML=`<b>${r.name}</b> ${r.stars}<br>${r.text}`;
+    allReviewsDiv.appendChild(p);
+  });
+  submitBtn.addEventListener("click",()=>{
+    const name=document.getElementById("reviewerName").value.trim();
+    const text=document.getElementById("reviewTextInput").value.trim();
+    const stars=document.getElementById("reviewStarsInput").value;
+    if(!name||!text||!stars)return;
+    const review={name,text,stars};
+    reviewsList.push(review);
+    localStorage.setItem("reviewsList",JSON.stringify(reviewsList));
+    const p=document.createElement("p");
+    p.innerHTML=`<b>${name}</b> ${stars}<br>${text}`;
+    allReviewsDiv.appendChild(p);
+  });
+
+  // ===== Online Sayğac (YENİ) =====
+  let online=120+Math.floor(Math.random()*20);
+  let orders=35+Math.floor(Math.random()*10);
+
+  setInterval(()=>{
+    online+=Math.floor(Math.random()*3-1);
+    if(online<90)online=95;
+    document.getElementById("onlineCount").innerText=online;
+  },3000);
+
+  setInterval(()=>{
+    if(Math.random()<0.4){
+      orders++;
+      document.getElementById("orderCount").innerText=orders;
+    }
+  },6000);
+
 });
 
-// Müştəri Rəy Slayderi
-const reviews=[
-  {text:"WhatsApp dəstək superdir 💯", name:"— Nazim M.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"N1 panel Bunlardı 🔥", name:"— Asim S.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"Çooooox ucuzdur qiymetler 👍", name:"— Gunel R.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"Çox sürətli və güvənli paneldir 👍", name:"— Elvin R.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"Reels izlenmeleri problemsiz gəldi 👌", name:"— Aysel Q.", stars:"⭐⭐⭐⭐⭐"}
-];
-let i=0;
-function showReview(){
-  document.getElementById("reviewText").innerText=reviews[i].text;
-  document.getElementById("reviewName").innerText=reviews[i].name;
-  document.getElementById("reviewStars").innerText=reviews[i].stars;
-  i=(i+1)%reviews.length;
-}
-showReview();
-setInterval(showReview,4000);
-
-// Rəy Formu + localStorage
-const submitBtn=document.getElementById("submitReview");
-const allReviewsDiv=document.getElementById("reviewsSlider");
-let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
-reviewsList.forEach(r=>{
-  const p=document.createElement("p");
-  p.innerHTML=`<b>${r.name}</b> ${r.stars}<br>${r.text}`;
-  allReviewsDiv.appendChild(p);
-});
-submitBtn.addEventListener("click",()=>{
-  const name=document.getElementById("reviewerName").value.trim();
-  const text=document.getElementById("reviewTextInput").value.trim();
-  const stars=document.getElementById("reviewStarsInput").value;
-  if(!name || !text || !stars){alert("Ad, rəy və ulduz seçməlisiniz!"); return;}
-  const review={name,text,stars};
-  reviewsList.push(review);
-  localStorage.setItem("reviewsList",JSON.stringify(reviewsList));
-  const p=document.createElement("p");
-  p.innerHTML=`<b>${name}</b> ${stars}<br>${text}`;
-  allReviewsDiv.appendChild(p);
-  document.getElementById("reviewerName").value="";
-  document.getElementById("reviewTextInput").value="";
-  document.getElementById("reviewStarsInput").value="";
-});
 </script>
 </body>
 </html>
