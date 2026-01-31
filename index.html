@@ -7,25 +7,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
- #onlineCount,#orderCount{
-  color:#00ff9c;
-  font-size:20px;
-  text-shadow:0 0 10px #00ff9c;
-}
- 
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
   background:radial-gradient(circle at top,#2b2b2b,#000);
   color:#ffd700;
   text-align:center;
+  overflow-x:hidden;
 }
 .container{max-width:420px;margin:auto;padding:25px}
-.logo{font-size:56px;animation:glow 2s infinite alternate}
+.logo{font-size:56px;animation:glow 2s infinite alternate;text-shadow:0 0 15px gold,0 0 30px gold;}
 @keyframes glow{from{text-shadow:0 0 10px gold}to{text-shadow:0 0 35px gold}}
 .title{font-size:30px;font-weight:bold}
 .subtitle{font-size:15px;color:#fff;margin:12px 0 30px}
 
+/* ===== Slider Banner ===== */
+.slider{
+  position:relative;
+  width:100%;
+  height:150px;
+  margin-bottom:20px;
+  overflow:hidden;
+  border-radius:16px;
+}
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:20px;
+  font-weight:bold;
+  text-shadow:0 0 10px #000;
+}
+.slide.active{opacity:1;}
+
+/* ===== Real-time Sayğac ===== */
+#onlineUsers{
+  margin:15px 0;
+  font-size:18px;
+  font-weight:bold;
+  color:#00ff00;
+}
+
+/* ===== Card & Hover ===== */
 .card{
   background:linear-gradient(145deg,#111,#1c1c1c);
   border:1px solid #ffd700;
@@ -33,9 +64,9 @@ body{
   padding:20px;
   margin-bottom:18px;
   box-shadow:0 0 20px rgba(255,215,0,.4);
-  transition:.3s;
+  transition: transform .3s ease, box-shadow .3s ease, opacity .6s ease;
+  opacity:0;
 }
-.card:hover{transform:scale(1.03);box-shadow:0 0 35px rgba(255,215,0,.9)}
 .card h3{margin:8px 0}
 .card p{margin:6px 0;color:#fff}
 
@@ -47,6 +78,12 @@ body{
   padding:4px 12px;
   border-radius:20px;
   font-weight:bold;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 5px gold}
+  50%{box-shadow:0 0 20px gold}
+  100%{box-shadow:0 0 5px gold}
 }
 
 .order-btn{
@@ -59,8 +96,13 @@ body{
   text-decoration:none;
   border-radius:10px;
   box-shadow:0 0 15px #25D366;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
 }
-.order-btn:hover{background:#6bff9c}
+.order-btn:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #25D366;
+  background:#6bff9c;
+}
 
 .whatsapp{margin-top:35px}
 .whatsapp a{
@@ -105,43 +147,58 @@ input, textarea, select{
   padding:6px;
   margin:6px 0;
 }
+
+/* ===== Scroll animasiya ===== */
+.reveal{
+  opacity:0;
+  transform: translateY(40px);
+  transition: all .6s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-<div class="logo">👑</div>
-<div class="title">BrendPanel.az</div>
-<div class="subtitle">🇦🇿 Ucuz • Güvənli • Sürətli SMM Panel</div>
+<!-- Slider Banner -->
+<div class="slider reveal">
+  <div class="slide active" style="background-image:url('https://source.unsplash.com/420x150/?social');">Ən ucuz paketlər burada!</div>
+  <div class="slide" style="background-image:url('https://source.unsplash.com/420x150/?tiktok');">TikTok paketləri sürətli!</div>
+  <div class="slide" style="background-image:url('https://source.unsplash.com/420x150/?instagram');">Instagram paketləri real!</div>
+</div>
 
-<button id="themeToggle" style="margin-top:10px;padding:8px 16px;border:none;border-radius:20px;cursor:pointer;font-weight:bold;">
+<!-- Online Sayğac -->
+<div id="onlineUsers" class="reveal">Online istifadəçi: <span id="userCount">0</span></div>
+
+<div class="logo reveal">👑</div>
+<div class="title reveal">BrendPanel.az</div>
+<div class="subtitle reveal">🇦🇿 Ucuz • Güvənli • Sürətli SMM Panel</div>
+
+<button id="themeToggle" class="reveal" style="margin-top:10px;padding:8px 16px;border:none;border-radius:20px;cursor:pointer;font-weight:bold;">
 🌙 Dark Mode
 </button>
 
 <!-- Statistikalar -->
-<div class="card">
+<div class="card reveal">
   <h3>⭐ Statistikamız</h3>
   <p>😊 500+ Məmnun Müştəri</p>
   <p>📦 1.200+ Uğurlu Sifariş</p>
   <p>🔒 100% Güvənli Xidmət</p>
 </div>
-<!-- Online Sayğac -->
-<div class="card">
-  <h3>📊 Canlı Aktivlik</h3>
-  <p>🟢 Online istifadəçi: <b id="onlineCount">120</b></p>
-  <p>🛒 Bu gün sifariş: <b id="orderCount">35</b></p>
-</div>
 
 <!-- TIKTOK Paketləri -->
-<div class="card"><h3>🎵 TikTok Paketləri</h3></div>
-<div class="card">
+<div class="card reveal"><h3>🎵 TikTok Paketləri</h3></div>
+<div class="card reveal">
   <h3>👤 1.000 Takipçi</h3>
   <p>✅ Real Qarantili</p>
   <p><b>💰 5 AZN</b></p>
   <a class="order-btn" href="https://wa.me/994516159103?text=1000%20TikTok%20Takipci">WhatsApp-dan sifariş et</a>
 </div>
-<div class="card">
+<div class="card reveal">
   <span class="badge">🔥 Ən Çox Satılan</span>
   <h3>Real Qarantili Paket</h3>
   <p>👁️ 1.000 İzlənmə</p>
@@ -150,60 +207,16 @@ input, textarea, select{
   <p><b>💰 3 AZN</b></p>
   <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%201000%20izlenme%201000%20beyenme">WhatsApp-dan sifariş et</a>
 </div>
-<div class="card">
-  <h3>👁️ 10.000 İzlənmə + ♥️ 10.000 Bəyənmə</h3>
-  <p>🤖 Bot Qarantili</p>
-  <p><b>💰 3 AZN</b></p>
-  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%2010000%20izlenme%2010000%20beyenme">WhatsApp-dan sifariş et</a>
-</div>
-<div class="card">
-  <h3>👁️ 10.000 İzlənmə + ♥️ 5.000 Bəyənmə</h3>
-  <p>🤖 Bot Qarantili</p>
-  <p><b>💰 2 AZN</b></p>
-  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%2010000%20izlenme%205000%20beyenme">WhatsApp-dan sifariş et</a>
-</div>
-<div class="card">
-  <h3>🚀 TikTok Keşfeti Açır ömürlük qalıcı</h3>
-  <p>👁️ 1.500 İzlənmə</p>
-  <p>♥️ 1.000 Bəyənmə</p>
-  <p>💾 100 Kaydet • 🔁 50 Paylaşım • 💬 10 Yorum</p>
-  <p><b>💰 3 AZN</b></p>
-  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%20kesfet%20paketi">WhatsApp-dan sifariş et</a>
-</div>
-
-<!-- INSTAGRAM Paketləri -->
-<div class="card"><h3>📸 Instagram Paketləri</h3></div>
-<div class="card">
-  <h3>👤 1.000 Instagram Takipçi</h3>
-  <p>✅ Real Qarantili</p>
-  <p><b>💰 5 AZN</b></p>
-  <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%201000%20real%20takipci">WhatsApp-dan sifariş et</a>
-</div>
-<div class="card">
-  <span class="badge">🔥 Yeni</span>
-  <h3>🇦🇿 Instagram Real Azərbaycan Bəyənmə</h3>
-  <p>👍 500 Bəyənmə</p>
-  <p>👁️ 500 İzlənmə</p>
-  <p>🚀 Keşfeti Açır</p>
-  <p><b>💰 3 AZN</b></p>
-  <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%20500%20real%20azerbaycan%20beyenme%20500%20izlenme">WhatsApp-dan sifariş et</a>
-</div>
-<div class="card">
-  <h3>👁️ 100.000 Reels İzlənmə ömürlük qalıcı</h3>
-  <p>♥️ 1.000 Bəyənmə</p>
-  <p><b>💰 3 AZN</b></p>
-  <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%20100000%20izlenme">WhatsApp-dan sifariş et</a>
-</div>
 
 <!-- Whatsapp ikon -->
-<div class="whatsapp">
+<div class="whatsapp reveal">
   <a href="https://wa.me/994516159103">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
   </a>
 </div>
 
 <!-- Müştəri Rəyləri Slayder -->
-<div class="card" id="customerReviews">
+<div class="card reveal" id="customerReviews">
   <h3>⭐ Müştəri Rəyləri</h3>
   <div id="reviewsSlider">
     <p id="reviewText"></p>
@@ -213,7 +226,7 @@ input, textarea, select{
 </div>
 
 <!-- Rəy Formu -->
-<div class="card">
+<div class="card reveal">
   <h3>✍️ Rəy Yazın</h3>
   <input type="text" id="reviewerName" placeholder="Adınız" style="width:80%;">
   <textarea id="reviewTextInput" placeholder="Rəyinizi yazın" style="width:80%;"></textarea>
@@ -230,86 +243,101 @@ input, textarea, select{
   <button id="submitReview" style="padding:6px 12px;margin-top:6px;background:#25D366;color:#000;font-weight:bold;border-radius:6px;border:none;cursor:pointer;">Göndər</button>
 </div>
 
-<footer>© 2025-2026 BrendPanel.az</footer>
+<footer class="reveal">© 2025-2026 BrendPanel.az</footer>
 
 <script>
-document.addEventListener("DOMContentLoaded",()=>{
-
-  // ===== Dark / Light Mode =====
-  const toggleBtn=document.getElementById("themeToggle");
-  function applyTheme(theme){
-    if(theme==="light"){
-      document.body.classList.add("light");
-      toggleBtn.innerText="☀️ Light Mode";
-    }else{
-      document.body.classList.remove("light");
-      toggleBtn.innerText="🌙 Dark Mode";
-    }
-  }
-  toggleBtn.addEventListener("click",()=>{
-    const current=localStorage.getItem("theme")||"dark";
-    const next=current==="dark"?"light":"dark";
-    localStorage.setItem("theme",next);
-    applyTheme(next);
-  });
-  applyTheme(localStorage.getItem("theme")||"dark");
-
-  // ===== Rəy Slayderi =====
-  const reviews=[
-    {text:"WhatsApp dəstək superdir 💯", name:"— Nazim M.", stars:"⭐⭐⭐⭐⭐"},
-    {text:"N1 panel Bunlardı 🔥", name:"— Asim S.", stars:"⭐⭐⭐⭐⭐"},
-    {text:"Çooooox ucuzdur qiymetler 👍", name:"— Gunel R.", stars:"⭐⭐⭐⭐⭐"}
-  ];
-  let i=0;
-  function showReview(){
-    document.getElementById("reviewText").innerText=reviews[i].text;
-    document.getElementById("reviewName").innerText=reviews[i].name;
-    document.getElementById("reviewStars").innerText=reviews[i].stars;
-    i=(i+1)%reviews.length;
-  }
-  showReview();
-  setInterval(showReview,4000);
-
-  // ===== Rəy Formu =====
-  const submitBtn=document.getElementById("submitReview");
-  const allReviewsDiv=document.getElementById("reviewsSlider");
-  let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
-  reviewsList.forEach(r=>{
-    const p=document.createElement("p");
-    p.innerHTML=`<b>${r.name}</b> ${r.stars}<br>${r.text}`;
-    allReviewsDiv.appendChild(p);
-  });
-  submitBtn.addEventListener("click",()=>{
-    const name=document.getElementById("reviewerName").value.trim();
-    const text=document.getElementById("reviewTextInput").value.trim();
-    const stars=document.getElementById("reviewStarsInput").value;
-    if(!name||!text||!stars)return;
-    const review={name,text,stars};
-    reviewsList.push(review);
-    localStorage.setItem("reviewsList",JSON.stringify(reviewsList));
-    const p=document.createElement("p");
-    p.innerHTML=`<b>${name}</b> ${stars}<br>${text}`;
-    allReviewsDiv.appendChild(p);
-  });
-
-  // ===== Online Sayğac (YENİ) =====
-  let online=120+Math.floor(Math.random()*20);
-  let orders=35+Math.floor(Math.random()*10);
-
-  setInterval(()=>{
-    online+=Math.floor(Math.random()*3-1);
-    if(online<90)online=95;
-    document.getElementById("onlineCount").innerText=online;
-  },3000);
-
-  setInterval(()=>{
-    if(Math.random()<0.4){
-      orders++;
-      document.getElementById("orderCount").innerText=orders;
-    }
-  },6000);
-
+// Dark / Light Mode
+const toggleBtn=document.getElementById("themeToggle");
+function applyTheme(theme){
+  if(theme==="light"){document.body.classList.add("light");toggleBtn.innerText="☀️ Light Mode";}
+  else{document.body.classList.remove("light");toggleBtn.innerText="🌙 Dark Mode";}
+}
+toggleBtn.addEventListener("click",()=>{
+  const current=localStorage.getItem("theme")||"dark";
+  const next=current==="dark"?"light":"dark";
+  localStorage.setItem("theme",next);
+  applyTheme(next);
 });
+document.addEventListener("DOMContentLoaded",()=>{
+  const savedTheme=localStorage.getItem("theme")||"dark";
+  applyTheme(savedTheme);
+});
+
+// Müştəri Rəy Slayderi
+const reviews=[
+  {text:"WhatsApp dəstək superdir 💯", name:"— Nazim M.", stars:"⭐⭐⭐⭐⭐"},
+  {text:"N1 panel Bunlardı 🔥", name:"— Asim S.", stars:"⭐⭐⭐⭐⭐"},
+  {text:"Çooooox ucuzdur qiymetler 👍", name:"— Gunel R.", stars:"⭐⭐⭐⭐⭐"},
+  {text:"Çox sürətli və güvənli paneldir 👍", name:"— Elvin R.", stars:"⭐⭐⭐⭐⭐"},
+  {text:"Reels izlenmeleri problemsiz gəldi 👌", name:"— Aysel Q.", stars:"⭐⭐⭐⭐⭐"}
+];
+let i=0;
+function showReview(){
+  document.getElementById("reviewText").innerText=reviews[i].text;
+  document.getElementById("reviewName").innerText=reviews[i].name;
+  document.getElementById("reviewStars").innerText=reviews[i].stars;
+  i=(i+1)%reviews.length;
+}
+showReview();
+setInterval(showReview,4000);
+
+// Rəy Formu + localStorage
+const submitBtn=document.getElementById("submitReview");
+const allReviewsDiv=document.getElementById("reviewsSlider");
+let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
+reviewsList.forEach(r=>{
+  const p=document.createElement("p");
+  p.innerHTML=`<b>${r.name}</b> ${r.stars}<br>${r.text}`;
+  allReviewsDiv.appendChild(p);
+});
+submitBtn.addEventListener("click",()=>{
+  const name=document.getElementById("reviewerName").value.trim();
+  const text=document.getElementById("reviewTextInput").value.trim();
+  const stars=document.getElementById("reviewStarsInput").value;
+  if(!name || !text || !stars){alert("Ad, rəy və ulduz seçməlisiniz!"); return;}
+  const review={name,text,stars};
+  reviewsList.push(review);
+  localStorage.setItem("reviewsList",JSON.stringify(reviewsList));
+  const p=document.createElement("p");
+  p.innerHTML=`<b>${name}</b> ${stars}<br>${text}`;
+  allReviewsDiv.appendChild(p);
+  document.getElementById("reviewerName").value="";
+  document.getElementById("reviewTextInput").value="";
+  document.getElementById("reviewStarsInput").value="";
+});
+
+// Scroll animasiya
+const cards=document.querySelectorAll(".card, .logo, .title, .subtitle, #themeToggle, footer, .slider, #onlineUsers");
+cards.forEach(c=>c.classList.add("reveal"));
+function revealOnScroll(){
+  cards.forEach(c=>{
+    const top=c.getBoundingClientRect().top;
+    const win=window.innerHeight;
+    if(top < win - 60){
+      c.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll",revealOnScroll);
+revealOnScroll();
+
+// Slider JS
+const slides=document.querySelectorAll(".slide");
+let currentSlide=0;
+setInterval(()=>{
+  slides[currentSlide].classList.remove("active");
+  currentSlide=(currentSlide+1)%slides.length;
+  slides[currentSlide].classList.add("active");
+},4000);
+
+// Real-time online sayğac (simulyasiya)
+let userCount=Math.floor(Math.random()*50)+50; // 50-100 arası istifadəçi
+const userSpan=document.getElementById("userCount");
+function updateUsers(){
+  userCount=Math.floor(Math.random()*50)+50;
+  userSpan.innerText=userCount;
+}
+setInterval(updateUsers,5000);
 
 </script>
 </body>
