@@ -113,6 +113,7 @@ input, textarea, select{
 🌙 Dark Mode
 </button>
 
+<!-- Statistikalar -->
 <div class="card">
   <h3>⭐ Statistikamız</h3>
   <p>😊 500+ Məmnun Müştəri</p>
@@ -120,14 +121,76 @@ input, textarea, select{
   <p>🔒 100% Güvənli Xidmət</p>
 </div>
 
-<!-- Whatsapp icon -->
+<!-- TIKTOK Paketləri -->
+<div class="card"><h3>🎵 TikTok Paketləri</h3></div>
+<div class="card">
+  <h3>👤 1.000 Takipçi</h3>
+  <p>✅ Real Qarantili</p>
+  <p><b>💰 5 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=1000%20TikTok%20Takipci">WhatsApp-dan sifariş et</a>
+</div>
+<div class="card">
+  <span class="badge">🔥 Ən Çox Satılan</span>
+  <h3>Real Qarantili Paket</h3>
+  <p>👁️ 1.000 İzlənmə</p>
+  <p>♥️ 1.000 Bəyənmə</p>
+  <p>🔒 Ömürlük Qalıcı</p>
+  <p><b>💰 3 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%201000%20izlenme%201000%20beyenme">WhatsApp-dan sifariş et</a>
+</div>
+<div class="card">
+  <h3>👁️ 10.000 İzlənmə + ♥️ 10.000 Bəyənmə</h3>
+  <p>🤖 Bot Qarantili</p>
+  <p><b>💰 3 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%2010000%20izlenme%2010000%20beyenme">WhatsApp-dan sifariş et</a>
+</div>
+<div class="card">
+  <h3>👁️ 10.000 İzlənmə + ♥️ 5.000 Bəyənmə</h3>
+  <p>🤖 Bot Qarantili</p>
+  <p><b>💰 2 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%2010000%20izlenme%205000%20beyenme">WhatsApp-dan sifariş et</a>
+</div>
+<div class="card">
+  <h3>🚀 TikTok Keşfeti Açır ömürlük qalıcı</h3>
+  <p>👁️ 1.500 İzlənmə</p>
+  <p>♥️ 1.000 Bəyənmə</p>
+  <p>💾 100 Kaydet • 🔁 50 Paylaşım • 💬 10 Yorum</p>
+  <p><b>💰 3 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%20kesfet%20paketi">WhatsApp-dan sifariş et</a>
+</div>
+
+<!-- INSTAGRAM Paketləri -->
+<div class="card"><h3>📸 Instagram Paketləri</h3></div>
+<div class="card">
+  <h3>👤 1.000 Instagram Takipçi</h3>
+  <p>✅ Real Qarantili</p>
+  <p><b>💰 5 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%201000%20real%20takipci">WhatsApp-dan sifariş et</a>
+</div>
+<div class="card">
+  <span class="badge">🔥 Yeni</span>
+  <h3>🇦🇿 Instagram Real Azərbaycan Bəyənmə</h3>
+  <p>👍 500 Bəyənmə</p>
+  <p>👁️ 500 İzlənmə</p>
+  <p>🚀 Keşfeti Açır</p>
+  <p><b>💰 3 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%20500%20real%20azerbaycan%20beyenme%20500%20izlenme">WhatsApp-dan sifariş et</a>
+</div>
+<div class="card">
+  <h3>👁️ 100.000 Reels İzlənmə ömürlük qalıcı</h3>
+  <p>♥️ 1.000 Bəyənmə</p>
+  <p><b>💰 3 AZN</b></p>
+  <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%20100000%20izlenme">WhatsApp-dan sifariş et</a>
+</div>
+
+<!-- Whatsapp ikon -->
 <div class="whatsapp">
   <a href="https://wa.me/994516159103">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
   </a>
 </div>
 
-<!-- ⭐ MÜŞTƏRİ RƏYLƏRİ -->
+<!-- Müştəri Rəyləri Slayder -->
 <div class="card" id="customerReviews">
   <h3>⭐ Müştəri Rəyləri</h3>
   <div id="reviewsSlider">
@@ -137,7 +200,7 @@ input, textarea, select{
   </div>
 </div>
 
-<!-- ⭐ MÜŞTƏRİ RƏY FORMU -->
+<!-- Rəy Formu -->
 <div class="card">
   <h3>✍️ Rəy Yazın</h3>
   <input type="text" id="reviewerName" placeholder="Adınız" style="width:80%;">
@@ -175,7 +238,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   applyTheme(savedTheme);
 });
 
-// Müştəri Rəy Slidəri (4-5 gözəl reylərlə)
+// Müştəri Rəy Slayderi
 const reviews=[
   {text:"WhatsApp dəstək superdir 💯", name:"— Nazim M.", stars:"⭐⭐⭐⭐⭐"},
   {text:"N1 panel Bunlardı 🔥", name:"— Asim S.", stars:"⭐⭐⭐⭐⭐"},
@@ -193,7 +256,7 @@ function showReview(){
 showReview();
 setInterval(showReview,4000);
 
-// Rəy Formu (localStorage ilə saxlayır)
+// Rəy Formu + localStorage
 const submitBtn=document.getElementById("submitReview");
 const allReviewsDiv=document.getElementById("reviewsSlider");
 let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
