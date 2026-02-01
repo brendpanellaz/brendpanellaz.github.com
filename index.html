@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="az">
 <head>
 <meta charset="UTF-8">
@@ -113,7 +113,6 @@ input, textarea, select{
 🌙 Dark Mode
 </button>
 
-<!-- Statistikalar -->
 <div class="card">
   <h3>⭐ Statistikamız</h3>
   <p>😊 500+ Məmnun Müştəri</p>
@@ -121,7 +120,7 @@ input, textarea, select{
   <p>🔒 100% Güvənli Xidmət</p>
 </div>
 
-<!-- TIKTOK Paketləri -->
+<!-- TIKTOK -->
 <div class="card"><h3>🎵 TikTok Paketləri</h3></div>
 <div class="card">
   <h3>👤 1.000 Takipçi</h3>
@@ -159,7 +158,7 @@ input, textarea, select{
   <a class="order-btn" href="https://wa.me/994516159103?text=TikTok%20kesfet%20paketi">WhatsApp-dan sifariş et</a>
 </div>
 
-<!-- INSTAGRAM Paketləri -->
+<!-- INSTAGRAM -->
 <div class="card"><h3>📸 Instagram Paketləri</h3></div>
 <div class="card">
   <h3>👤 1.000 Instagram Takipçi</h3>
@@ -183,30 +182,29 @@ input, textarea, select{
   <a class="order-btn" href="https://wa.me/994516159103?text=Instagram%20100000%20izlenme">WhatsApp-dan sifariş et</a>
 </div>
 
-<!-- Whatsapp ikon -->
 <div class="whatsapp">
   <a href="https://wa.me/994516159103">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
   </a>
 </div>
 
-<!-- Müştəri Rəyləri Slayder -->
+<!-- ⭐ MÜŞTƏRİ RƏYLƏRİ -->
 <div class="card" id="customerReviews">
   <h3>⭐ Müştəri Rəyləri</h3>
   <div id="reviewsSlider">
-    <p id="reviewText"></p>
-    <b id="reviewName"></b>
-    <p id="reviewStars"></p>
+    <p id="reviewText">Çox sürətli və keyfiyyətli xidmət 👍</p>
+    <b id="reviewName">— Elvin R.</b>
+    <p>⭐⭐⭐⭐⭐</p>
   </div>
 </div>
 
-<!-- Rəy Formu -->
+<!-- ⭐ MÜŞTƏRİ RƏY FORMU -->
 <div class="card">
   <h3>✍️ Rəy Yazın</h3>
   <input type="text" id="reviewerName" placeholder="Adınız" style="width:80%;">
   <textarea id="reviewTextInput" placeholder="Rəyinizi yazın" style="width:80%;"></textarea>
   <div>Ulduz:
-    <select id="reviewStarsInput">
+    <select id="reviewStars">
       <option value="">Seçin</option>
       <option value="⭐">⭐</option>
       <option value="⭐⭐">⭐⭐</option>
@@ -219,6 +217,21 @@ input, textarea, select{
 </div>
 
 <footer>© 2025-2026 BrendPanel.az</footer>
+
+<!-- 🔴 CANLI SİFARİŞ BİLDİRİŞİ -->
+<div id="liveOrder" style="
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+color:#fff;
+padding:12px 16px;
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,0,0,.6);
+font-size:13px;
+display:none;
+z-index:9999;
+"></div>
 
 <script>
 // Dark / Light Mode
@@ -238,48 +251,59 @@ document.addEventListener("DOMContentLoaded",()=>{
   applyTheme(savedTheme);
 });
 
-// Müştəri Rəy Slayderi
+// Müştəri Rəy Slidəri
 const reviews=[
-  {text:"WhatsApp dəstək superdir 💯", name:"— Nazim M.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"N1 panel Bunlardı 🔥", name:"— Asim S.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"Çooooox ucuzdur qiymetler 👍", name:"— Gunel R.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"Çox sürətli və güvənli paneldir 👍", name:"— Elvin R.", stars:"⭐⭐⭐⭐⭐"},
-  {text:"Reels izlenmeleri problemsiz gəldi 👌", name:"— Aysel Q.", stars:"⭐⭐⭐⭐⭐"}
+  {text:"Çox sürətli və güvənli paneldir 👍", name:"— Elvin R."},
+  {text:"Qiymətlər çox münasibdir 🔥", name:"— Nihad M."},
+  {text:"Reels izlenmeleri problemsiz gəldi 👌", name:"— Aysel Q."},
+  {text:"WhatsApp dəstək superdir 💯", name:"— Murad H."}
 ];
 let i=0;
-function showReview(){
+setInterval(()=>{
+  i=(i+1)%reviews.length;
   document.getElementById("reviewText").innerText=reviews[i].text;
   document.getElementById("reviewName").innerText=reviews[i].name;
-  document.getElementById("reviewStars").innerText=reviews[i].stars;
-  i=(i+1)%reviews.length;
-}
-showReview();
-setInterval(showReview,4000);
+},4000);
 
-// Rəy Formu + localStorage
+// Canlı sifariş
+const orders=["📦 TikTok — 10.000 İzlənmə alındı","📦 Instagram — 1.000 Real Takipçi alındı","📦 TikTok — 1.000 Bəyənmə alındı","📦 Instagram — Reels 100.000 İzlənmə","📦 TikTok — Keşfet Paketi alındı"];
+function showLiveOrder(){
+  const box=document.getElementById("liveOrder");
+  const randomOrder=orders[Math.floor(Math.random()*orders.length)];
+  const minutes=Math.floor(Math.random()*5)+1;
+  box.innerHTML=`<b>${minutes} dəqiqə əvvəl</b><br>${randomOrder}`;
+  box.style.display="block";
+  setTimeout(()=>{box.style.display="none";},5000);
+}
+setInterval(showLiveOrder,12000);
+
+// Rəy Formu (birbaşa Müştəri Rəyləri bölməsinə əlavə olunur)
 const submitBtn=document.getElementById("submitReview");
-const allReviewsDiv=document.getElementById("reviewsSlider");
+const customerReviews=document.getElementById("customerReviews");
 let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
 reviewsList.forEach(r=>{
   const p=document.createElement("p");
   p.innerHTML=`<b>${r.name}</b> ${r.stars}<br>${r.text}`;
-  allReviewsDiv.appendChild(p);
+  customerReviews.appendChild(p);
 });
 submitBtn.addEventListener("click",()=>{
   const name=document.getElementById("reviewerName").value.trim();
   const text=document.getElementById("reviewTextInput").value.trim();
-  const stars=document.getElementById("reviewStarsInput").value;
-  if(!name || !text || !stars){alert("Ad, rəy və ulduz seçməlisiniz!"); return;}
+  const stars=document.getElementById("reviewStars").value;
+  if(!name){alert("Adınızı yazmalısınız!");return;}
+  if(!text){alert("Rəy yazmalısınız!");return;}
+  if(!stars){alert("Ulduz seçməlisiniz!");return;}
   const review={name,text,stars};
   reviewsList.push(review);
   localStorage.setItem("reviewsList",JSON.stringify(reviewsList));
   const p=document.createElement("p");
   p.innerHTML=`<b>${name}</b> ${stars}<br>${text}`;
-  allReviewsDiv.appendChild(p);
+  customerReviews.appendChild(p);
   document.getElementById("reviewerName").value="";
   document.getElementById("reviewTextInput").value="";
-  document.getElementById("reviewStarsInput").value="";
+  document.getElementById("reviewStars").value="";
 });
 </script>
+
 </body>
 </html>
