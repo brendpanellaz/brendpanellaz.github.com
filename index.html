@@ -100,6 +100,23 @@ input, textarea, select{
   margin:6px 0;
 }
 </style>
+<style>
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 18px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+</style>
+  
 </head>
 
 <body>
@@ -320,6 +337,17 @@ submitBtn.addEventListener("click",()=>{
   document.getElementById("reviewTextInput").value="";
   document.getElementById("reviewStars").value="";
 });
+</script>
+<script>
+for (let i = 0; i < 20; i++) {
+  let snow = document.createElement("div");
+  snow.innerHTML = "❄";
+  snow.className = "snowflake";
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  snow.style.opacity = Math.random();
+  document.body.appendChild(snow);
+}
 </script>
 
 </body>
